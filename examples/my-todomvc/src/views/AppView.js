@@ -23,12 +23,25 @@ function Main(props) {
 
     return (
         <section id="main">
+            <div>
+                <input className="new-todo edit"
+                    type="text"
+                    placeholder="Add a todo..."
+                    value={props.draft.text}
+                    onChange={ (e) => {
+                        console.log(e.target)
+                        props.onUpdateDraft(e.target.value) 
+                    }}
+                />
+                <button 
+                    onClick={ () => props.onAddTodo(props.draft)}>Add Todo</button>
+            </div>
             <ul id="todo-list">
                 {[...props.todos.values()].reverse().map( todo => (
                     <li key={todo.id}>
                         <div className="view">
                             <input
-                                className="toggle"
+                                className={`toggle ${todo.complete ? "completed" : ""}`}
                                 type="checkbox"
                                 checked={todo.complete}
                                 onChange={ () => props.onToggleTodo( todo.id ) }

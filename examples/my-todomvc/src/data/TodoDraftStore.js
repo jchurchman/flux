@@ -1,4 +1,4 @@
-import { Immutable } from 'immutable';
+import Immutable from 'immutable';
 import { ReduceStore } from 'flux/utils';
 import TodoActionTypes from './TodoActionTypes';
 import TodoDispatcher from './TodoDispatcher';
@@ -16,11 +16,10 @@ class TodoDraftStore extends ReduceStore {
     reduce(state, action) {
         switch(action.type) {
             case TodoActionTypes.ADD_TODO:
-                return state;
+                return state.set( new Draft() );
             case TodoActionTypes.UPDATE_DRAFT:
                 return state.update(
-                    action.id,
-                    draft => draft.set('text', text)
+                    draft => draft.set('text', action.text)
                 )
             default:
                 return state;
