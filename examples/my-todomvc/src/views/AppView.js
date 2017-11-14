@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AppView() {
+function AppView(props) {
     return (
         <div>
             <Header {...props} />
