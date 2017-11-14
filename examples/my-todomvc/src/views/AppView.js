@@ -1,7 +1,7 @@
 import React from 'react';
 
 function AppView() {
-    return <div>Hellow from Flux!</div>;
+    return <div>Hello from Flux!</div>;
 }
 
 export default AppView;
